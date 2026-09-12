@@ -187,6 +187,7 @@ const 地区映射 = {
   'NL': ['🇳🇱 荷兰', 'NL', 'Netherlands'],
   'FI': ['🇫🇮 芬兰', 'FI', 'Finland'],
   'GB': ['🇬🇧 英国', 'GB', 'United Kingdom'],
+  'PH': ['🇵🇭 菲律宾', 'PH', 'Philippines'],
   'Oracle': ['甲骨文', 'Oracle'],
   'DigitalOcean': ['数码海', 'DigitalOcean'],
   'Vultr': ['Vultr', 'Vultr'],
@@ -253,6 +254,11 @@ let 备用地址列表 = [{
   domain: 解码64('UHJveHlJUC5HQi5DTUxpdXNzc3MubmV0'),
   region: 'GB',
   regionCode: 'GB',
+  port: 443
+}, {
+  domain: 解码64('cGgucHJveHlpcC5jbWxpdXNzc3MubmV0'),
+  region: 'PH',
+  regionCode: 'PH',
   port: 443
 }, {
   domain: 解码64('UHJveHlJUC5PcmFjbGUuY21saXVzc3NzLm5ldA=='),
@@ -550,20 +556,21 @@ async function 获取值备用地址(工作器地区753 = '', 值地区匹配752
 function 获取值值(地区747) {
   const 值映射 = {
     'US': ['SG', 'JP', 'KR'],
-    'SG': ['JP', 'KR', 'US'],
+    'SG': ['JP', 'KR', 'US', 'PH'],
     'JP': ['SG', 'KR', 'US'],
     'KR': ['JP', 'SG', 'US'],
     'DE': ['NL', 'GB', 'SE', 'FI'],
     'SE': ['DE', 'NL', 'FI', 'GB'],
     'NL': ['DE', 'GB', 'SE', 'FI'],
     'FI': ['SE', 'DE', 'NL', 'GB'],
-    'GB': ['DE', 'NL', 'SE', 'FI']
+    'GB': ['DE', 'NL', 'SE', 'FI'],
+    'PH': ['SG', 'HK', 'JP', 'US']
   };
   return 值映射[地区747] || [];
 }
 function 获取值值值值(地区746) {
   const 值值745 = 获取值值(地区746);
-  const 值值744 = ['US', 'SG', 'JP', 'KR', 'DE', 'SE', 'NL', 'FI', 'GB'];
+  const 值值744 = ['US', 'SG', 'JP', 'KR', 'DE', 'SE', 'NL', 'FI', 'GB', 'PH'];
   return [地区746, ...值值745, ...值值744.filter(结果值743 => 结果值743 !== 地区746 && !值值745.includes(结果值743))];
 }
 function 获取值地区值(工作器地区, 可用地址列表, 值地区匹配 = 启用地区匹配) {
@@ -4123,7 +4130,8 @@ async function 处理订阅值(请求241, 用户240 = null) {
         SE: '🇸🇪 瑞典',
         NL: '🇳🇱 荷兰',
         FI: '🇫🇮 芬兰',
-        GB: '🇬🇧 英国'
+        GB: '🇬🇧 英国',
+        PH: '🇵🇭 菲律宾'
       },
       terminal: '终端 v3.0',
       githubProject: 'GitHub 项目',
@@ -4276,7 +4284,8 @@ async function 处理订阅值(请求241, 用户240 = null) {
         SE: '🇸🇪 سوئد',
         NL: '🇳🇱 هلند',
         FI: '🇫🇮 فنلاند',
-        GB: '🇬🇧 بریتانیا'
+        GB: '🇬🇧 بریتانیا',
+        PH: '🇵🇭 فیلیپین'
       },
       terminal: 'ترمینال v3.0',
       githubProject: 'پروژه GitHub',
@@ -5311,6 +5320,7 @@ async function 处理订阅值(请求241, 用户240 = null) {
                                     <option value="NL">${翻译值.regionNames.NL}</option>
                                     <option value="FI">${翻译值.regionNames.FI}</option>
                                     <option value="GB">${翻译值.regionNames.GB}</option>
+                                    <option value="PH">${翻译值.regionNames.PH}</option>
                             </select>
                                 <small id="wkRegionHint" style="color: #7aa9c4; font-size: 0.85rem; display: none;">⚠️ ${翻译值.customIPDisabledHint}</small>
                         </div>
@@ -6018,7 +6028,8 @@ async function 检查系统状态() {
           'SE': '🇸🇪 瑞典',
           'NL': '🇳🇱 荷兰',
           'FI': '🇫🇮 芬兰',
-          'GB': '🇬🇧 英国'
+          'GB': '🇬🇧 英国',
+          'PH': '🇵🇭 菲律宾'
         },
         customIPMode: '${解码64('6Ieq5a6a5LmJUHJveHlJUOaooeW8jyAocOWPmOmHj+WQr+eUqCk=')}',
         customIPModeDesc: '自定义IP模式 (已禁用地区匹配)',
@@ -6051,7 +6062,8 @@ async function 检查系统状态() {
           'SE': '🇸🇪 سوئد',
           'NL': '🇳🇱 هلند',
           'FI': '🇫🇮 فنلاند',
-          'GB': '🇬🇧 بریتانیا'
+          'GB': '🇬🇧 بریتانیا',
+          'PH': '🇵🇭 فیلیپین'
         },
         customIPMode: '${解码64('2K3Yp9mE2KogUHJveHlJUCDYs9mB2KfYsdi024wgKNmF2KrYutuM2LEgcCDZgdi52KfZhCDYp9iz2Kop')}',
         customIPModeDesc: 'حالت IP سفارشی (تطبیق منطقه غیرفعال است)',
